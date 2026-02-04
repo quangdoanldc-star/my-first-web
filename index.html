@@ -2,111 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Quang – Kitchen Notebook</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <title>Private Access</title>
   <style>
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: #faf7f2;
-      color: #2b2b2b;
-      margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
     }
-
-    .container {
-      max-width: 720px;
-      margin: 80px auto;
-      padding: 0 20px;
-    }
-
-    h1 {
-      font-size: 2.4em;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-style: italic;
-      color: #666;
-      margin-bottom: 40px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      font-size: 1.3em;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 6px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      line-height: 1.6;
-      margin: 0 0 12px;
-    }
-
-    a {
-      color: #2b2b2b;
-      text-decoration: none;
-      border-bottom: 1px dotted #999;
-    }
-
-    a:hover {
-      color: #000;
-      border-bottom: 1px solid #000;
-    }
-
-    footer {
-      margin-top: 80px;
-      font-size: 0.9em;
-      color: #888;
+    .login-box {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 8px;
+      width: 300px;
       text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background: #c89b3c;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .error {
+      color: #ff6b6b;
+      margin-top: 10px;
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Quang</h1>
-    <div class="subtitle">
-      Chef notebook · recipes · thoughts
-    </div>
 
-    <section>
-      <h2>About</h2>
-      <p>
-        This is my personal kitchen notebook.
-        A place to keep recipes, experiments, and thoughts gathered along the way.
-      </p>
-    </section>
+<div class="login-box">
+  <h2>Private Kitchen</h2>
+  <input type="password" id="password" placeholder="Enter password" />
+  <button onclick="login()">Enter</button>
+  <div class="error" id="error"></div>
+</div>
 
-    <section>
-      <h2>Journal</h2>
-      <p>
-        Daily notes, kitchen observations, ideas worth remembering.
-      </p>
-    </section>
+<script>
+  function login() {
+    const password = document.getElementById("password").value;
+    const correctPassword = "cocotte123"; // 👈 đổi password ở đây
 
-    <section>
-      <h2>Recipes</h2>
-      <p>
-        Selected recipes I’m comfortable sharing —
-        some classic, some experimental.
-      </p>
-    </section>
+    if (password === correctPassword) {
+      localStorage.setItem("auth", "true");
+      window.location.href = "recipes.html";
+    } else {
+      document.getElementById("error").innerText = "Wrong password";
+    }
+  }
+</script>
 
-    <section>
-      <h2>Notes</h2>
-      <p>
-        Techniques, ratios, failures, and things not found in cookbooks.
-      </p>
-    </section>
-
-    <footer>
-      © Quang · Kitchen Notebook
-    </footer>
-  </div>
 </body>
 </html>
